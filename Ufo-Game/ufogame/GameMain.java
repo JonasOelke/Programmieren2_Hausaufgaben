@@ -11,8 +11,8 @@ public class GameMain {
 				+ 			"------------------------------- \n	"
 				+ 			"Bitte gib jetzt deinen Namen (oder ein Pseudonym) an und drücke dann Enter, um das Spiel zu starten:");
 		Scanner input = new Scanner(System.in);
-		//String playerName = input.nextLine();
-		String playerName = "dev";	
+		String playerName = input.nextLine();
+		//String playerName = "dev";	
 		input.close();
 		Game game = new Game(playerName);
 		game.init();
