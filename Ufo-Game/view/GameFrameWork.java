@@ -91,9 +91,10 @@ public class GameFrameWork {
 
 			@Override
 			public void run() {
-				for (ITickableListener tickable : ticks) {
-					tickable.tick(delay);
-				}
+				TicksThread tickthread = new TicksThread();
+				tickthread.setDelay(delay);
+				tickthread.setTicks(ticks);
+				tickthread.start();
 				gameFrame.update();
 			}
 		};
@@ -124,6 +125,7 @@ public class GameFrameWork {
 
 			}
 		});
+		
 
 	}
 
@@ -353,6 +355,14 @@ public class GameFrameWork {
 	 */
 	public void addMessage(Message message) {
 		messages.add(message);
+	}
+	
+	public int getWidth() {
+		return gameFrame.width;
+	}
+	
+	public int getHeight() {
+		return gameFrame.height;
 	}
 
 }

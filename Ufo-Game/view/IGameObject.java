@@ -14,5 +14,6 @@ public interface IGameObject {
 	public int getWidth();
 	public int getHeight();
 	public String getImagePath();
+	public void move();
 
 }

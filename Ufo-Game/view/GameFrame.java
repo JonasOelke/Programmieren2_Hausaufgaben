@@ -15,8 +15,8 @@ public class GameFrame extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	private GamePanel panel;
-	private int width = 400;
-	private int height = 400;
+	protected int width = 400;
+	protected int height = 400;
 
 	public GameFrame(LinkedList<Image> imageObjects, LinkedList<IGameObject> gameObjects, LinkedList<Shape> gameShapes) {
 		panel = new GamePanel(new Dimension(width, height));
@@ -43,7 +43,6 @@ public class GameFrame extends JFrame{
 			}
 		});
 	}
-
 
 	public void setBackgroundColor(Color color) {
 		SwingUtilities.invokeLater(new Runnable() {

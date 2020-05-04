@@ -11,7 +11,7 @@ import view.IGameObject;
  * @author Stephi
  *
  */
-public class Projectile implements IGameObject {
+public class Projectile implements IGameObject, IMoveable {
 
 	private int x;
 	private int y;
@@ -40,9 +40,37 @@ public class Projectile implements IGameObject {
 		this.speed = speed;
 		this.sprite = sprite;
 	}
+	
+	/**
+	 * Creates a new projectile and get it ready to the given ship immediately  
+	 * A projectile moves with the given speed step by step to the top edge.
+	 * You can set an sprite as jpg or png.
+	 * @param ship The ship you want the projectile to be in front of
+	 * @param speed defined how fast or slowly the projectile should move
+	 * @param sprite image of the projectile
+	 */
+	public Projectile(Ship ship, int speed, String sprite) {
+		this.speed = speed;
+		this.sprite = sprite;
+		this.height = ship.getHeight();
+		this.width = ship.getWidth();
+		getReady(ship);
+	}
 
+	@Override
 	public void move() {
 		y = y - speed;
+	}
+	
+	public void getReady(Ship ship) {
+		final int DISTANCE_TO_SHIP = 10;
+		
+		//set Projectile x to the middel of the Ship
+		this.x = ship.getX() + ship.getWidth() / 2;
+		
+		// set the Projectile Y to the top of ship with a given distance
+		this.y = ship.getY() - DISTANCE_TO_SHIP - this.height;
+		
 	}
 	
 	public boolean isCollided() {

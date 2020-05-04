@@ -11,7 +11,7 @@ import view.IGameObject;
  * @author Stephi
  *
  */
-public class Ufo implements IGameObject{
+public class Ufo implements IGameObject, IMoveable{
 
 	private int x;
 	private int y;
@@ -44,6 +44,7 @@ public class Ufo implements IGameObject{
 	/**
 	 * Moves the ufo. The x coordinate is increased by speed.
 	 */
+	@Override
 	public void move() {
 		x = x + speed;
 	}
